@@ -4,6 +4,7 @@ Josh Campbell
 """
 
 import logging
+import brown_bear
 from ask_sdk_core.skill_builder import SkillBuilder
 from ask_sdk_core.utils import is_request_type, is_intent_name
 from ask_sdk_core.handler_input import HandlerInput
@@ -29,7 +30,7 @@ def response_logger(_handler_input, response):
 @sb.request_handler(can_handle_func=is_request_type("LaunchRequest"))
 def launch_request_handler(handler_input):
     # type: (HandlerInput) -> Response
-    speech_text = "Brown bear, brown bear, what do you see?"
+    speech_text = brown_bear.STORY
 
     handler_input.response_builder.speak(speech_text).set_card(
         SimpleCard(
@@ -42,7 +43,7 @@ def launch_request_handler(handler_input):
 @sb.request_handler(can_handle_func=is_intent_name("BrownBearStoryIntent"))
 def brown_bear_story_intent_handler(handler_input):
     # type: (HandlerInput) -> Response
-    speech_text = "Brown bear, brown bear, what do you see?"
+    speech_text = brown_bear.STORY
 
     handler_input.response_builder.speak(speech_text).set_card(
         SimpleCard(
